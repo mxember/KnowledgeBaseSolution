@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Api", "KnowledgeBase.Api\KnowledgeBase.Api.csproj", "{7A43DD8F-3360-42AF-90B5-E19F6E8315BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Client.Server", "KnowledgeBase.Client\KnowledgeBase.Client.Server\KnowledgeBase.Client.Server.csproj", "{5070D8B4-1004-469E-AFCA-46BABAFAF414}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "knowledgebase.client.client", "KnowledgeBase.Client\knowledgebase.client.client\knowledgebase.client.client.esproj", "{F6F341B5-85A0-4FDC-968A-FBC0553127B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A43DD8F-3360-42AF-90B5-E19F6E8315BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A43DD8F-3360-42AF-90B5-E19F6E8315BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A43DD8F-3360-42AF-90B5-E19F6E8315BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A43DD8F-3360-42AF-90B5-E19F6E8315BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5070D8B4-1004-469E-AFCA-46BABAFAF414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5070D8B4-1004-469E-AFCA-46BABAFAF414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5070D8B4-1004-469E-AFCA-46BABAFAF414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5070D8B4-1004-469E-AFCA-46BABAFAF414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6F341B5-85A0-4FDC-968A-FBC0553127B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6F341B5-85A0-4FDC-968A-FBC0553127B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6F341B5-85A0-4FDC-968A-FBC0553127B0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F6F341B5-85A0-4FDC-968A-FBC0553127B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6F341B5-85A0-4FDC-968A-FBC0553127B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6F341B5-85A0-4FDC-968A-FBC0553127B0}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

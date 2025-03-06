@@ -1,0 +1,24 @@
+.container {
+    padding: 20px;
+}
+
+.article-list {
+    list-style: none;
+    padding: 0;
+}
+
+.article-list li {
+    background: #f4f4f4;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.article-list li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.article-list li a:hover {
+    text-decoration: underline;
+}
