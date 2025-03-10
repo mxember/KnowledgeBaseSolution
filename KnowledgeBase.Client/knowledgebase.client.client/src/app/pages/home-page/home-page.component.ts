@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ArticleService, Article } from '../../services/article.service';
 
 @Component({
   selector: 'app-home-page',
@@ -6,10 +7,19 @@ import { Component } from '@angular/core';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
-export class HomePageComponent {
-  articles = [
-    { id: 1, title: "Getting Started with the Knowledge Base", summary: "Learn how to use this platform" },
-    { id: 2, title: "How to Add Articles", summary: "A step-by-step guide on creating articles." },
-    { id: 3, title: "Managing Your Knowledge Base", summary: "Tips on organizing your content." }
-  ]
+export class HomePageComponent implements OnInit {
+  articles: Article[] = [];
+
+  constructor(private articleService: ArticleService) { }
+
+  ngOnInit() {
+    this.articleService.getArticles().subscribe(data => {
+      this.articles = data
+    },
+      error => {
+        console.error("Error fetching articles:", error); //error logging
+      }
+    );
+  }
+  
 }

@@ -3,10 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-interface Article {
+export interface Article {
   id: number;
   title: string;
   content: string;
+  createdAt: string;
 }
 
 
@@ -19,11 +20,11 @@ export class ArticleService {
 
   constructor(private http: HttpClient) { }
 
-  getAllArticles(): Observable<Article[]> {
+  getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.apiUrl);
   }
 
-  getArticleById(id: number): Observable<Article> {
+  getArticle(id: number): Observable<Article> {
     return this.http.get<Article>(`${this.apiUrl}/${id}`);
   }
 }

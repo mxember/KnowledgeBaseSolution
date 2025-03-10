@@ -2,12 +2,9 @@
   <h1>Welcome to the Knowledge Base</h1>
   <p>Browse articles to get started</p>
 
-  <ul class="article-list">
-    <li *ngFor="let article of articles">
-      <a [routerLink]="['/article', article.id]">
-        <h3>{{article.title}}</h3>
-        <p>{{article.summary}}</p>
-      </a>
-    </li>
-  </ul>
+    <div *ngFor="let article of articles">
+      <h2>{{article.title}}</h2>
+      <p>{{article.content}}</p>
+      <a [routerLink]="['/article', article.id]">Read More</a>
+    </div>
 </div>

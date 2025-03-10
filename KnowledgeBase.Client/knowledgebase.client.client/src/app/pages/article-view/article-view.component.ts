@@ -26,7 +26,7 @@ export class ArticleViewComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const articleId = +params['id'];
-      this.articleService.getArticleById(articleId).subscribe(
+      this.articleService.getArticle(articleId).subscribe(
         (data) => this.article = data,
         () => this.article = null
       );
