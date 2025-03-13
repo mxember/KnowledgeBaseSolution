@@ -1,0 +1,14 @@
+<div class="editor-container">
+  <h1>{{ isNew ? 'Create New Article' : 'Edit Article' }}</h1>
+
+  <label>Title:</label>
+  <input type="text" [(ngModel)]="article.title" placeholder="Enter article title" />
+
+  <label>Content:</label>
+  <textarea [(ngModel)]="article.content" placeholder="Write your article here..."></textarea>
+
+  <div class="buttons">
+    <button (click)="saveArticle()">{{ isNew ? 'Create' : 'Save'}}</button>
+    <button (click)="cancel()">Cancel</button>
+  </div>
+</div>

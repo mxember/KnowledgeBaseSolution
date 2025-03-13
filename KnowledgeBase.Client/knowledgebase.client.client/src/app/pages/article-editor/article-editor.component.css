@@ -1,0 +1,58 @@
+.editor-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 200px;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:first-child {
+    background-color: #28a745;
+    color: white;
+}
+
+button:first-child:hover {
+    background-color: #218838;
+}
+
+button:last-child {
+    background-color: #dc3545;
+    color: white;
+}
+
+button:last-child:hover {
+    background-color: #c82333;
+}

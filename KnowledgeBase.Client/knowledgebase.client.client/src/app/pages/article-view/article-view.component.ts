@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ArticleService } from '../../services/article.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ArticleService, Article } from '../../services/article.service';
 
 @Component({
   selector: 'app-article-view',
@@ -9,27 +9,27 @@ import { ArticleService } from '../../services/article.service';
   styleUrl: './article-view.component.css'
 })
 export class ArticleViewComponent implements OnInit {
-  articleId!: number;
-  article: any;
-
-  //articles = [
-  //  { id: 1, title: "Getting Started with the Knowledge Base", content: "This article helps you navigate..." },
-  //  { id: 2, title: "How to Add Articles", content: "You can add articles using the editor..." },
-  //  { id: 3, title: "Managing Your Knowledge Base", content: "Keep your articles organized..." }
-  //];
+  article: Article | null = null;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private articleService: ArticleService
   ) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const articleId = +params['id'];
-      this.articleService.getArticle(articleId).subscribe(
-        (data) => this.article = data,
-        () => this.article = null
+  ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (!isNaN(id)) {
+      this.articleService.getArticle(id).subscribe(
+        data => this.article = data,
+        error => console.error("Error loading article:", error)
       );
-    });
+    }
+  }
+
+  editArticle() {
+    if (this.article) {
+      this.router.navigate(['/edit', this.article.id]);
+    }
   }
 }

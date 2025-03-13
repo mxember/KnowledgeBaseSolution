@@ -1,12 +1,13 @@
-<div class="article-container" *ngIf="article; else notFound">
+<div *ngIf="article; else loading">
   <h1>{{article.title}}</h1>
   <p>{{article.content}}</p>
-  <a routerLink="/">Back to Home</a>
- </div>
 
-<ng-template #notFound>
-  <div class="article-container">
-    <h1>Article Not Found</h1>
-    <a routerLink="/">Back to Home</a>
+  <div class="buttons">
+  <a routerLink="/">Back to Articles</a>
+    <button (click)="editArticle()">Edit</button>
+</div>
   </div>
+
+<ng-template #loading>
+  <p>Loading article...</p>
 </ng-template>

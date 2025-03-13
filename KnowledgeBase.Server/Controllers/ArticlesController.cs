@@ -37,19 +37,56 @@ namespace KnowledgeBase.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Article>> PostArticle(Article article)
+        public async Task<ActionResult<Article>> CreateArticle(Article article)
         {
+            article.CreatedAt = DateTime.UtcNow;
             _context.Articles.Add(article);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetArticle), new { id = article.Id }, article);
         }
-    }
 
-    //public class Article
-    //{
-    //    public int Id { get; set; }
-    //    public string Title { get; set; }
-    //    public string Content { get; set; }
-    //}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateArticle(int id, Article article)
+        {
+            if (id != article.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(article).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return Ok(article);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Articles.Any(e => e.Id == id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteArticle(int id)
+        {
+            var article = await _context.Articles.FindAsync(id);
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            _context.Articles.Remove(article);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+    }
 }
