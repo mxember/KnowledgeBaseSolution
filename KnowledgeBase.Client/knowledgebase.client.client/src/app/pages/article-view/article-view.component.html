@@ -5,8 +5,9 @@
   <div class="buttons">
   <a routerLink="/">Back to Articles</a>
     <button (click)="editArticle()">Edit</button>
-</div>
+    <button (click)="deleteArticle(article.id)" class="btn btn-danger">Delete</button>
   </div>
+</div>
 
 <ng-template #loading>
   <p>Loading article...</p>

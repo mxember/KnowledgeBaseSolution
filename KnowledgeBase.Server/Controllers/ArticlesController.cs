@@ -37,13 +37,32 @@ namespace KnowledgeBase.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Article>> CreateArticle(Article article)
+        [Consumes("application/json")]
+        public async Task<IActionResult> CreateArticle([FromBody] Article article)
         {
-            article.CreatedAt = DateTime.UtcNow;
-            _context.Articles.Add(article);
-            await _context.SaveChangesAsync();
+            if (article == null)
+            {
+                return BadRequest("Request body is missing");
+            }
+            if (string.IsNullOrWhiteSpace(article.Title) || string.IsNullOrWhiteSpace(article.Content))
+            {
+                return BadRequest("Title and content are required");
+            }
 
-            return CreatedAtAction(nameof(GetArticle), new { id = article.Id }, article);
+            article.CreatedAt = DateTime.UtcNow;
+
+            try
+            {
+                _context.Articles.Add(article);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction(nameof(GetArticle), new { id = article.Id }, article);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occured while saving the article: " + ex.Message);
+            }
+            
         }
 
         [HttpPut("{id}")]

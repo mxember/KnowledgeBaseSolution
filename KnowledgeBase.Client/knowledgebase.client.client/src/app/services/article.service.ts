@@ -33,6 +33,12 @@ export class ArticleService {
   }
 
   createArticle(article: Article): Observable<Article> {
-    return this.http.post<Article>(this.apiUrl, article);
+    return this.http.post<Article>(`${this.apiUrl}`, article, {
+      headers: {'Content-Type': 'application/json'}
+    });
+  }
+
+  deleteArticle(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
