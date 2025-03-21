@@ -9,7 +9,13 @@ import { ArticleService, Article } from '../../services/article.service';
   styleUrl: './article-view.component.css'
 })
 export class ArticleViewComponent implements OnInit {
-  article: Article | null = null;
+  article: Article = {
+    id: 0,
+    title: '',
+    content: '',
+    createdAt: new Date().toISOString()
+  };
+
   articleId!: number;
 
   constructor(
@@ -35,7 +41,6 @@ export class ArticleViewComponent implements OnInit {
   }
 
   deleteArticle(articleId: number): void {
-    debugger
     if (!articleId) {
       alert('Invalid article ID.');
       return;

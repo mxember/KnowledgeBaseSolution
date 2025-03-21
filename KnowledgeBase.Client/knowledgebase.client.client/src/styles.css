@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+.article-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}

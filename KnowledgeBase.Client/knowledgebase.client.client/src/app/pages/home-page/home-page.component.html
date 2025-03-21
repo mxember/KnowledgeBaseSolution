@@ -1,11 +1,14 @@
-<div class="container">
-  <h1>Welcome to the Knowledge Base</h1>
+<div class="container mt-4">
+  <h1 class="mb-4">Welcome to the Knowledge Base</h1>
   <p>Browse articles to get started</p>
 
-    <div *ngFor="let article of articles">
-      <h2>{{article.title}}</h2>
-      <p>{{article.content}}</p>
-      <a [routerLink]="['/article', article.id]">Read More</a>
+    <div *ngFor="let article of articles" class="card mb-3 shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title">{{article.title}}</h2>
+        <p class="card-text text-muted">{{article.createdAt | date:'medium'}}</p>
+        <p class="card-text">{{article.content | slice:0:200}}...</p>
+      <a [routerLink]="['/article', article.id]" class="btn btn-primary">Read More</a>
     </div>
+      </div>
   <button routerLink="/create" class="btn btn-primary">Create New Article</button>
 </div>

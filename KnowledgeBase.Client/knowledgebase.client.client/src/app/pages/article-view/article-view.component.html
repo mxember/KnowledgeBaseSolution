@@ -1,14 +1,16 @@
-<div *ngIf="article; else loading">
-  <h1>{{article.title}}</h1>
-  <p>{{article.content}}</p>
+<div class="container mt-4">
+  <div class="card shadow-lg p-4">
+    <h1 class="mb-3 text-center">{{article?.title}}</h1>
+    <p class="text-muted text-center">Published on {{article?.createdAt | date:'fullDate'}}</p>
 
-  <div class="buttons">
-  <a routerLink="/">Back to Articles</a>
-    <button (click)="editArticle()">Edit</button>
-    <button (click)="deleteArticle(article.id)" class="btn btn-danger">Delete</button>
+    <div class="article-content">
+      <p class="lead">{{article?.content}}</p>
+    </div>
+
+    <div class="d-flex justify-content-end mt-4">
+      <button class="btn btn-warning me-2" [routerLink]="article?.id ? '/edit/' + article.id : '#'">Edit</button>
+      <button class="btn btn-danger" (click)="article?.id ? deleteArticle(article.id) : null">Delete</button>
+    </div>
   </div>
+  <a routerLink="/">Back to Articles</a>
 </div>
-
-<ng-template #loading>
-  <p>Loading article...</p>
-</ng-template>
